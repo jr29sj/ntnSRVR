@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for historique in historiques %}
+    <div class="card mb-3">    
+        <div class="row g-0">      
+            <div>        
+                <div class="card-body">          
+                    <h5 class="card-title">{{ historique.headline}}</h5>          
+                    <p class="card-text">{{ historique.body }}</p>          
+                    <p class="card-text"><small class="text-muted"> {{historique.date }}  </small></p>        
+                </div>      
+            </div>    
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
+

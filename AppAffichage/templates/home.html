@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+
+
+<div class="container">
+    <form action=""> 
+    <div class="input-group">
+        <input type="text" name="searchFrappe" class="form-control rounded" placeholder="Recherhe d'une frappe..." aria-label="Search" aria-describedby="search-addon" />
+        <button type="submit" class="btn btn-outline-dark">Chercher</button>
+    </form>
+    
+    
+    </div>
+    {% if searchTerm%}
+        <p class="text-center">Réponse pour : {{ searchTerm }}</p>
+    {% endif %}
+</div>
+
+<!--<div class="container">
+            <form action="">
+                    <div class="input-group">
+                        <label class="form-label">Search for Movie:</label>
+                        <input type="text" name="searchFrappe"          class="form-control rounded" />
+                    </div>      
+                    <button type="submit" class="btn btn-primary">        Search      </button>
+                    <p>Réponse pour : {{ searchTerm }}</p>
+                </form>
+</div>
+-->
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for frappe in frappes %}
+            <div v-for="frappe in frappes" class="col">
+                <div class="card">
+                    <div class="card-body ">
+                        <a href="{% url 'detail' frappe.id %}" class="link-secondary">
+                            <h5 class="card-title fw-bold">{{frappe.title }}</h5>          
+                        </a>
+                        <p class="card-text">{{ frappe.description}}</p>
+                        {% if frappe.url %}
+                            <a href="{{ frappe.url }}" class="btn btn-primary">Frappe Link</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+</div>
+
+{% endblock content %}
